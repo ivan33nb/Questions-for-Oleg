@@ -1,0 +1,132 @@
+1)Решил задачу с выводом телефонного номера в определенном формате. 
+return "("+numbers[0]+numbers[1]+numbers[2]+") "+numbers[3]+numbers[4]+numbers[5]+"-"+numbers[6]+numbers[7]+numbers[8]+numbers[9];
+
+максимально некрасивый код, понимаю
+
+2)Задача:
+int[] a = new int[]{121, 144, 19, 161, 19, 144, 19, 11};
+        int[] b = new int[]{121, 14641, 20736, 361, 25921, 361, 20736, 361};
+        System.out.println((AreSame.comp(a, b)));
+
+Если мы возводим любое число из первого массива в квадрат и результат не находится во втором массиве - вернуть false.
+как мне показалось я решил вторую задачу, на нахождение сходств в массивах, однако, я что то делаю не так. Попытался решить ее 2-мя разными способами:
+
+            ArrayList list1 = new ArrayList<>();
+            ArrayList list2 = new ArrayList<>();
+            
+            for(int d=0;d<a.length;d++){
+                
+                list1.add(a[d]);
+                list2.add(b[d]);
+            }
+            boolean result;
+            for(int i = 0; i<a.length; i++) {
+                if (list2.contains(Math.pow(a[i], 2))) {
+                    result = false;
+                }
+                result = true;
+            }
+            return result;  --- Почему то ИДЕЯ не видит значение которое я присваиваю result. Куда я его только не пихал, либо не видит return либо цикл. Куда его нужно ставить, что бы ему присвоилось значение согласно условию? Не понимаю. 
+
+Подумав, что это слишком сложно, решил сделать так: 
+
+public static class AreSame {
+
+        public static boolean comp(int[] a, int[] b) {
+            int sumA=0;
+            int sumB=0;
+            for(int i=0;i<a.length;i++){
+                sumB = sumB + b[i];
+                sumA = (int) (sumA + Math.pow(a[i],2));
+            }
+            if(a==null || b==null){
+                return false;
+            }
+            else return sumA==sumB;
+        }
+    }
+
+Прекрасно понимаю, что данный код не универсален, но бившись над этой задаче уже не понятно сколько, решил сделать так. Но! В идее все работает, когда прохожу test, тоже все горит зеленым, но как только attempt - до свидания! Решение не проходит. Бьюсь над этой задачей уже очень долго, поэтому, если можно, мы с тобой разберем ее на занятии, а я постараюсь решить что нибудь еще. (За то кучу всего повспоминал!)
+
+3)
+Видимо вопросы у меня будут по каждой задаче. Хотя вопрос по сути один и тот же. Я не могу присвоить значение переменной (для того что бы потом вернуть как результат работы метода), во время итерации. 
+
+Задача: Есть массив чисел. Если в массиве одно число четное, значит остальные нечетные и наоброт. Напишите метод который будет возвращать число отличное от остальных, по признаку четности и нечетности. 
+
+Я решил, что сначала надо написать метод, который будет определять каких чисел в массиве больше. Сначала решил, что мой метод будет возвращать boolean, однако понял, что по сути 2х вариантов мало. Есть еще 0. Поэтому написал так: 
+
+public class Main {
+
+    public static void main(String[] args) {
+        int[] exampleTest1 = {2, 6, 8, -10, 3};
+        int[] exampleTest2 = {206847684, 1056521, 7, 17, 1901, 21104421, 7, 1, 35521, 1, 7781};
+        int[] exampleTest3 = {Integer.MAX_VALUE, 0, 1};
+        assertEquals(3, FindOutlier.find(exampleTest1));
+        assertEquals(206847684, FindOutlier.find(exampleTest2));
+        assertEquals(0, FindOutlier.find(exampleTest3));
+        System.out.println(Integer.MAX_VALUE);
+    }
+}
+
+
+class FindOutlier {
+
+    public static int find(int[] integers) {
+        int other;
+        int check = twoMethods.checkArray(integers);
+
+        if(check==2){
+            for(int i=0;i<integers.length;i++){
+                if(integers[i]%2!=0){
+                    return  integers[i];
+                }
+
+            }
+            if(check==1){
+                for(int i=0;i<integers.length;i++){
+                    if(integers[i]%2==0){
+                        return integers[i];
+                    }
+                }
+            }
+
+        }
+        if(check == 0){
+            other = 0;
+        }
+        else other=0;
+        return  other;
+    }
+}
+
+class twoMethods {
+    public static int checkArray(int[] integers) {
+        int even = 0;
+        int odd = 0;
+        int haveZero = 0;
+        for (int i = 0; i < integers.length; i++) {
+            if (integers[i] % 2 == 0) {
+                even++;
+            } else if(integers[i]%2 !=0) odd++;
+            else if(integers[i]==0) haveZero++;
+        }
+        if(haveZero>=1){
+            return 0;
+        }
+        if (even > odd) {
+            return 2;
+        } else return 1;
+    }
+
+}
+
+Я не могу присвоить значение int other в цикле. Уже вторая задача, а проблема одна и та же. Возможно я не перечисляю все возможные условия, хотя я ведь использую else. 
+
+4) Не получается сделать отдельную ветку (графически не отображается). Прочитал про no ff, но что то не выходит. Только окрашивается другим цветом и все. Я бы посомтрел один раз как это делется и понял бы ошибку. Сделать кучу коммитов и мерджей, но не получается. 
+
+Получилось с 3-й попытки. Буду пробовать еще. А то такое ощущние что делал одно и то же, а результат разный.
+
+5)
+
+
+
