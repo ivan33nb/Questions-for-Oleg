@@ -1,0 +1,56 @@
+Задачи решил начал решать с самой первой, что бы побольше сделать. Что бы не переписывать условия, буду писать стр и номер задачи. 
+
+1) с93 з1
+class Main {
+
+    public static void main(String[] args)  {
+        Test test = new Test();
+        test.outputOnDisplay();
+
+    }
+
+    public static class Test{
+        int i;
+        char c;
+        public void outputOnDisplay(){
+            System.out.println(i);
+            System.out.println(c);
+        }
+    }
+}
+
+2) з2
+ctrl+f9
+
+3)з3 - з7 - все решил:) 
+
+4) з8
+class Main {
+
+    public static void main(String[] args){
+        Test test1 = new Test(1, 2, 3, 4);
+        Test test2 = new Test(5, 6, 7, 8);
+        Test test3 = new Test(9,10,11,12);
+        System.out.println(test1.i0);
+        System.out.println(test2.i0);
+        System.out.println(test3.i0);
+    }
+
+
+    public static class Test{
+        static int i0;
+        int i;
+        int i2;
+        int i3;
+        Test(int i, int i0, int i2, int i3){
+            this.i=i;
+            this.i0=i0;
+            this.i2=i2;
+            this.i3=i3;
+        }
+    }
+}
+
+5) з9
+
+
