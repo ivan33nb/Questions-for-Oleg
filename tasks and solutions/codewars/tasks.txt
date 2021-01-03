@@ -1,0 +1,14 @@
+1) Решил задачу на определение четверти года. 
+
+2) Задача на перевод из десятичной системы в двоичную:
+
+     class Kata {
+
+        public static int toBinary(int n) {
+            String convert = Integer.toBinaryString(n);
+            int i = Integer.parseInt(convert);
+            return i;
+        }
+}
+
+3) 
