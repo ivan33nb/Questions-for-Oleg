@@ -70,6 +70,8 @@
 
     }
 
+Потому что вызов конструктора из конструктора должен быть первой строкой. 
+
 p161
 
 11) Пытаюсь сделать класс с методом finalize(), но IDEA отмечает его как устаревший..=)
@@ -94,22 +96,23 @@ p161
 
 13) Инициализируемый в точке определения - значит что мы создаем ссылку определенного типа и сразу присваиваем ей значение? 
 String s = "Hello"; - Инициализация в точке определения? 
+Точка определения - объявление переменной. 
 
 String s; 
 {...}
 s = "Hello"; - Инициализация НЕ в точке определения? 
 
 14) Инициализация класса - есть инициализация его полей? 
+По сути - да. 
 
 15) Список аргументов переменной длинны может содержать ноль аргументов. Это может быть полезно при передаче НЕОБЯЗАТЕЛЬНО ЗАВЕРШАЮЩИХ АРГУМЕНТОВ. Что это значит? 
+Это значит, что есть аргументы в методе, которые не обязательно передовать. 
 
 16) Класс это некий файл с кодом? Пакет это папка, где хранятся файлы, верно? 
 
-17) Как создать пакет? Просто указываю package.packagename; Далее, делаю свои дела и все? 
-
 18) Вообще в целом мало что понял про пакеты, надеюсь разберем более подробно. 
 
-19) Помоги пожалуйста разобраться в понятиях: библиотека, пакет, файл, каталог, (все это в контексте главы 6)
+19) Помоги пожалуйста разобраться в понятиях: библиотека, пакет, файл, каталог. (все это в контексте главы 6)
  
 20) Правильно ли я соорудил отложенную инициализацию? 
 public class Main {
@@ -139,49 +142,40 @@ class Test{
 Композиция, это наполнение нового класса, объектами уе существующих классов, однако разве мы не можем использоват их методы? 
 Правильно ли я осуществил делегировани? 
 
-class FootballTeam{
-    void sprint(int speed){}
-    void backToDefence(String nameOfEnemyPlayer){}
-    void pass(String nameOfTeammate){}
-    void shoutOnTheGoal(double firstCoordinate, double secondCoordinate, int ballHittingForce){}
-    void passOnTheMove(String nameOfTeammate, int ballHittingForce){}
-    void jumpAndShoutTheBall(int height){}
-}
-
-class FootballPlayer{
-    private String name;
-    private FootballTeam footballTeam = new FootballTeam();
-    public FootballPlayer(String name){
-        this.name = name;
-    }
-    public void sprint(int speed){
-        footballTeam.sprint(speed);
-    }
-    public void backToDefence(String nameOfEnemyPlayer){
-        footballTeam.backToDefence(nameOfEnemyPlayer);
-    }
-    public void pass(String nameOfTeammate){
-        footballTeam.pass(nameOfTeammate);
-    }
-    public void shoutOnTheGoal(double firstCoordinate, double secondCoordinate, int ballHittingForce){
-        footballTeam.shoutOnTheGoal(firstCoordinate, secondCoordinate, ballHittingForce);
-    }
-    public void passOnTheMove(String nameOfTeammate, int ballHittingForce){
-        footballTeam.passOnTheMove(nameOfTeammate, ballHittingForce);
-    }
-    public void jumpAndShoutTheBall(int height){
-        footballTeam.jumpAndShoutTheBall(height);
-    }
-
-}
+Делегирование это то же самое что и Композиция, но методы новог класса называются так же как и методы супер класса. 
 
 
-22) Правильно ли, что при композиции нам недосутпны все методы объектов из которых мы составляем композицию в виде нового объекта? 
 
 23) Конструктор наследуемого класса, должен вызывать конструктор базового в своем конструкторе? 
+Если конструткор не дефолтный, то должен!
 
 24) Давай попробуем подробно разобрать код на 218 странице, пожалуйста, меня интересует один вопрос. 
 
 25) " Композиция используется когда в новом классе необходимо задействовать функциональность существующего класса, но не его интерфейс". 
 Меня сильно смущает слово "интерфейс" и "функциональность". Функциональность - это способности класса, то есть его методы? А что такое интерфейс класса? (Меня путает слово интерфейс, потому что в джаве, насколько я помню, есть интерфейсы для множественного наследования. А что имеется в виду тут? 
 
+26) Что бы обратиться к внутреннему классу, нужно создать объект внешнего класса? Это правильное утверждение? 
+
+public class Outer {
+    class Inner {
+
+    }
+
+    public Inner newInner() {
+        return new Inner();
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        Outer outer = new Outer();
+        Outer.Inner in = outer.newInner();
+    }
+}
+
+Только так, верно? 
+
+27) Что такое класс обертка, простыми словами? Еще со времен JR не могу с этим разобраться
+
+28) Что такое произвольная область действий? 
