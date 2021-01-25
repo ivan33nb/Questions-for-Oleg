@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List <Humans> humansList = new ArrayList<Humans>();
+
+        for(int i = 0; i <= 50; i++){
+            humansList.add(new Humans(i));
+        }
+        System.out.println(taskFromOleg(humansList, -10));
+    }
+
+    public static List<Humans> taskFromOleg(List<Humans> humansList, int maxAge){
+        List<Humans> result = new ArrayList<>();
+        boolean b = true;
+
+        for(Humans humans1 : humansList){
+            if(maxAge < humans1.age){
+                b = false;
+            }
+        }
+        if(!b){
+            System.out.println("Люди с таким маленьким возрастом отсутствуют!");
+        }
+
+        if(b){
+            for(Humans humans : humansList){
+                if(humans.age<maxAge){
+                    result.add((humans));
+                }
+            }
+        }return result;
+
+    }
+
+}
+
+class Humans{
+    int age;
+    public Humans(int age){
+        this.age = age;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Возраст человека " + " = " + age;
+    }
+}
